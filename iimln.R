@@ -123,3 +123,7 @@ table(students$grade)
 students%>%group_by(gender) %>% tally()
 students%>% group_by(gender) %>% summarise(mean(age,n(),min(marks), max(marks)))
 students%>%group_by(gender,grade) %>%summarise(mean(age))
+
+
+
+#day2
