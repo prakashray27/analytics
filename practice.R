@@ -129,7 +129,7 @@ library(ggplot2)
 df1 %>% ggplot(., aes(x=gear, y=n, fill=factor(vs))) +  geom_bar(stat="identity") + geom_text(aes(y=label_ypos, label=n), vjust=1.6, color="white", size=3) + scale_fill_brewer(palette="Paired")+   theme_minimal()
 
 
-
+?position_dodge
 
 
 

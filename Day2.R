@@ -123,7 +123,7 @@ ggplot(students%>%group_by(gender,program)%>%summarise(COUNT=n()),aes(x=gender,y
 names(students)
 names(meltsum1)
 head(meltsum1)
-ggplot(meltsum1%>%group_by(program,gender,subject)%>%summarise(meanMarks=round(mean(marks))),aes(x=gender,y=meanMarks,fill=program))+geom_bar(stat='identity',position=position_dodge2(.7))+geom_text(aes(label=meanMarks),position=position_dodge2(.7))+labs(title='subject-program-gender-mean marks')+facet_grid(~subject)
+#ggplot(meltsum1%>%group_by(program,gender,subject)%>%summarise(meanMarks=round(mean(marks))),aes(x=gender,y=meanMarks,fill=program))+geom_bar(stat='identity',position=position_dodge2(.7))+geom_text(aes(label=meanMarks),position=position_dodge2(.7))+labs(title='subject-program-gender-mean marks')+facet_grid(~subject)
 
 
 ggplot(mtcars,aes(x=wt,y=mpg,size=hp,color=factor(gear),shape=factor(am)))+geom_point()

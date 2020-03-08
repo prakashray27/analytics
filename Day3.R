@@ -250,3 +250,90 @@ predict(prunetree2, newdata = testdata2, type='prob')
 #rpart, CART, classification model
 #regression decision = predict numerical value eg sales
 
+
+
+#clustering----
+library(dplyr)
+(marks1=trunc(rnorm(n=30,mean=70,sd=8)))
+sum(marks1)
+df5<-data.frame(marks1=marks1)
+head(df5)
+km3<-kmeans(df5,centers = 3)
+attributes(km3)
+km3$cluster
+km3$centers
+km3$size
+sort(df5$marks1)
+
+cbind(df5,km3$cluster)
+df5$cluster=km3$cluster
+head(df5)
+df5%>%arrange(cluster)
+dist(df5[1:5,])
+df5[1:5,]              
+
+
+#2nd iteration-----
+set.seed(1234)
+(marks1=trunc(rnorm(n=30,mean=70,sd=8)))
+(marks2=trunc(rnorm(n=30,mean=120,sd=10)))
+
+df6<-data.frame(marks1,marks2)
+head(df6)
+
+km3b<-kmeans(df6,centers = 5)
+attributes(km3b)
+km3b$cluster
+km3b$centers
+km3b$size
+sort(df5$marks1)
+
+cbind(df6,km3b$cluster)
+df6$cluster=km3b$cluster
+head(df6)
+df6%>%arrange(cluster)
+dist(df6[1:5,])
+df6[1:5,]
+plot(df6$marks1,df6$marks2,col=df6$cluster)
+
+
+
+
+
+
+#scale data and plot cluster----
+
+
+df6B<-scale(df6[,c('marks1','marks2')])
+head(df6B)
+km3c<-kmeans(df6,centers = 5)
+attributes(km3c)
+km3c$cluster
+km3c$centers
+km3c$size
+
+
+cbind(df6B,km3c$cluster)
+
+head(df6B)
+df6$newcluster=km3c$cluster
+df6B%>%arrange(cluster)
+dist(df6B[1:5,])
+df6B[1:5,]
+plot(df6B$marks1,df6B$marks2,col=df6B$cluster)
+
+
+
+
+
+#wordcloud 2----
+library(wordcloud2)
+df=data.frame(word=c('mdi','iim','imt'),freq=c(20,23,15))
+df
+par(mar=c(0,0,0,0))
+wordcloud2(df)
+
+head(demoFreq)
+dim(demoFreq)
+par(mar=c(0,0,0,0))
+wordcloud2(demoFreq)
