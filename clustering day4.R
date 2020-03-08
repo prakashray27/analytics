@@ -1,4 +1,4 @@
-#clustering
+#clustering----
 set.seed(1234)
 subject1=trunc(rnorm(30,mean=60,sd=15))
 range(subject1)
@@ -24,3 +24,22 @@ k2$centers
 k2a=kmeans(marks,centers=c(50,70))
 k2a
 k2a$centers
+
+
+
+#clustering mtcars----
+mtcars
+head(mtcars)
+table(mtcars$cyl)
+mtscaled<-as.matrix(scale(mtcars))
+heatmap(mtscaled,Colv = F,scale = 'none')
+
+
+
+clustMTC= kmeans(mtcars[,c('wt','mpg')],center=3)
+plot(x=mtcars$wt,y=mtcars$mpg,col=clustMTC$custer)
+
+
+
+
+
